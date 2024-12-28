@@ -35,9 +35,7 @@ def model_prediction(test_image):
     # Load the model using tf.keras.models.load_model()
     try:
         model = tf.keras.models.load_model(model_path)
-        st.write("Model loaded successfully.")
     except Exception as e:
-        st.error(f"Error loading model: {e}")
         return None
 
     # Preprocess the image
