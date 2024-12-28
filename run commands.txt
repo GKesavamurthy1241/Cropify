@@ -1,0 +1,4 @@
+for crop recommendation
+streamlit run c:/Users/kesav/Desktop/Cropify/CROP-RECOMMENDATION/webapp.py
+for disease detection
+streamlit run c:/Users/kesav/Desktop/Cropify/PLANT-DISEASE-IDENTIFICATION/main.py
