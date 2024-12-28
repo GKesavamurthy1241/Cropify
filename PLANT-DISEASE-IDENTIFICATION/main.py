@@ -6,18 +6,7 @@ from io import BytesIO
 from PIL import Image
 import tempfile
 
-url = "https://raw.githubusercontent.com/GKesavamurthy1241/Cropify/master/PLANT-DISEASE-IDENTIFICATION/Diseases.png"
 
-try:
-    # Fetch the image from the URL
-    response = requests.get(url)
-    response.raise_for_status()  # Raise an HTTPError if the request failed
-
-    # Open the image as a file-like object
-    img = Image.open(BytesIO(response.content))
-
-    # Display image using Streamlit
-    st.image(img, caption="Crop Image", use_column_width=True)
 def model_prediction(test_image):
     # Raw URL for the model file on GitHub
     model_url = "https://raw.githubusercontent.com/GKesavamurthy1241/Cropify/master/PLANT-DISEASE-IDENTIFICATION/trained_plant_disease_model.keras"
@@ -35,7 +24,9 @@ def model_prediction(test_image):
     # Load the model using tf.keras.models.load_model()
     try:
         model = tf.keras.models.load_model(model_path)
+        st.write("Model loaded successfully.")
     except Exception as e:
+        st.error(f"Error loading model: {e}")
         return None
 
     # Preprocess the image
