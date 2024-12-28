@@ -50,6 +50,19 @@ def model_prediction(test_image):
     return np.argmax(predictions)
 
 
+url = "https://raw.githubusercontent.com/GKesavamurthy1241/Cropify/master/PLANT-DISEASE-IDENTIFICATION/Diseases.png"
+
+try:
+    # Fetch the image from the URL
+    response = requests.get(url)
+    response.raise_for_status()  # Raise an HTTPError if the request failed
+
+    # Open the image as a file-like object
+    img = Image.open(BytesIO(response.content))
+
+    # Display image using Streamlit
+    st.image(img, caption="Crop Image", use_column_width=True)
+
 # Sidebar
 st.sidebar.title("Cropify")
 app_mode = st.sidebar.selectbox("Select Page", ["HOME", "DISEASE RECOGNITION"])
